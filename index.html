@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Veo Dongle Control</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+</head>
+<body>
+    <div class="app-container">
+        <header class="app-header">
+            <h1>Veo Dongle Control</h1>
+            <div class="connection-status" id="connectionStatus">
+                <span class="status-dot" id="statusDot"></span>
+                <span id="statusText">Connecting...</span>
+            </div>
+        </header>
+
+        <nav class="app-navigation">
+            <button class="nav-button active" data-page="devices">
+                <span class="material-icons">devices</span>
+                Devices
+            </button>
+            <button class="nav-button" data-page="settings">
+                <span class="material-icons">settings</span>
+                Settings
+            </button>
+        </nav>
+
+        <main class="app-main">
+            <!-- Devices Page -->
+            <div id="devicesPage" class="page active">
+                <div class="page-header">
+                    <h2>Connected Devices</h2>
+                    <button class="refresh-button" id="refreshDevices">
+                        <span class="material-icons">refresh</span>
+                        Refresh
+                    </button>
+                </div>
+
+                <div id="devicesList" class="devices-list">
+                    <div class="loading-spinner" id="devicesLoading">
+                        <div class="spinner"></div>
+                        <p>Loading devices...</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Device Control Page -->
+            <div id="deviceControlPage" class="page">
+                <div class="page-header">
+                    <button class="back-button" id="backToDevices">
+                        <span class="material-icons">arrow_back</span>
+                        Back
+                    </button>
+                    <h2 id="deviceControlTitle">Device Control</h2>
+                </div>
+
+                <div class="device-control">
+                    <div class="device-info">
+                        <h3 id="deviceName">Device Name</h3>
+                        <div class="device-status">
+                            <span class="status-indicator" id="deviceStatusIndicator"></span>
+                            <span id="deviceStatusText">Status</span>
+                        </div>
+                        <p class="device-id">ID: <span id="deviceId"></span></p>
+                    </div>
+
+                    <div class="control-section">
+                        <h4>Stream Controls</h4>
+                        <div class="control-buttons">
+                            <button class="control-button play-button" id="playButton">
+                                <span class="material-icons">play_arrow</span>
+                                Play
+                            </button>
+                            <button class="control-button pause-button" id="pauseButton">
+                                <span class="material-icons">pause</span>
+                                Pause
+                            </button>
+                            <button class="control-button fullscreen-button" id="fullscreenButton">
+                                <span class="material-icons">fullscreen</span>
+                                Fullscreen
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="stream-url-section">
+                        <h4>Send Stream URL</h4>
+                        <form id="streamUrlForm" class="stream-url-form">
+                            <div class="form-group">
+                                <label for="veoUrl">Veo Stream URL</label>
+                                <input
+                                    type="url"
+                                    id="veoUrl"
+                                    name="veoUrl"
+                                    placeholder="https://live.veo.co/stream/..."
+                                    required
+                                >
+                            </div>
+                            <div class="form-actions">
+                                <button type="button" class="secondary-button" id="fillExample">Use Example</button>
+                                <button type="submit" class="primary-button">
+                                    <span class="material-icons">send</span>
+                                    Send Stream
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Settings Page -->
+            <div id="settingsPage" class="page">
+                <div class="page-header">
+                    <h2>Settings</h2>
+                </div>
+
+                <div class="settings-form">
+                    <div class="form-group">
+                        <label for="apiUrl">API Base URL</label>
+                        <input
+                            type="url"
+                            id="apiUrl"
+                            name="apiUrl"
+                            placeholder="https://your-azure-function-url"
+                            value="http://localhost:4000"
+                        >
+                        <small class="form-help">Your Azure Functions URL or local development server</small>
+                    </div>
+
+                    <div class="form-actions">
+                        <button class="primary-button" id="saveSettings">Save Settings</button>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <!-- Loading Overlay -->
+        <div class="loading-overlay" id="loadingOverlay">
+            <div class="loading-content">
+                <div class="spinner"></div>
+                <p id="loadingText">Processing...</p>
+            </div>
+        </div>
+
+        <!-- Toast Notifications -->
+        <div class="toast-container" id="toastContainer"></div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/microsoft-signalr/8.0.0/signalr.min.js"></script>
+    <script src="js/config.js"></script>
+    <script src="js/api.js"></script>
+    <script src="js/ui.js"></script>
+    <script src="js/app.js"></script>
+</body>
+</html>

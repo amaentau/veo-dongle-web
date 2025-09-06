@@ -1,0 +1,22 @@
+{
+  "name": "veo-dongle-web",
+  "version": "1.0.0",
+  "description": "Web-based control interface for Veo Dongle devices",
+  "main": "index.html",
+  "scripts": {
+    "start": "python -m http.server 8080",
+    "build": "echo 'No build step required for static site'",
+    "deploy": "echo 'Deploy manually or use Azure Static Web Apps'"
+  },
+  "dependencies": {},
+  "devDependencies": {},
+  "keywords": [
+    "veo",
+    "dongle",
+    "raspberry-pi",
+    "web-control",
+    "streaming"
+  ],
+  "author": "Veo Dongle Team",
+  "license": "MIT"
+}
