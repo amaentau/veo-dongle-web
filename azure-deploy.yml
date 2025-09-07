@@ -38,3 +38,4 @@ jobs:
           app_location: 'web-app'
           api_location: 'api' # If you have Azure Functions
           output_location: '' # Leave empty for static site
+

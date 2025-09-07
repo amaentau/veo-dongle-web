@@ -56,3 +56,4 @@ loadConfig();
 
 // Export for use in other modules
 window.VeoConfig = CONFIG;
+
