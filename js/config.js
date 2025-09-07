@@ -2,7 +2,7 @@
 
 const CONFIG = {
     // API Configuration
-    API_BASE_URL: 'http://localhost:4000', // Default to local development
+    API_BASE_URL: 'https://veo-dongle-api.azurewebsites.net', // Azure Functions API
 
     // Azure SignalR Configuration (will be set after Azure setup)
     SIGNALR_CONNECTION_STRING: '',
